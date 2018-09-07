@@ -1,4 +1,4 @@
-html {
+  html {
     height: 100%;
   }
   
@@ -10,9 +10,9 @@ html {
     min-height: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-family: 'Courier New', sans-serif;
+    font-family: Georgia, serif;
     font-weight: normal;
-    font-size: 1.5em;
+    font-size: 1.7em;
     background: linear-gradient(150deg,#D5E3F1 15%,#FFFBD9 70%,#FFDFCB 94%);
   }
   
@@ -23,4 +23,11 @@ html {
   .table-bordered, .table-bordered td, .table-bordered th {
     border: 1px solid #2F465D;
   }
-  
+
+  input[type=checkbox] {
+    transform: scale(1.5);
+  }
+
+  .small-margin {
+    margin: 10px;
+  }

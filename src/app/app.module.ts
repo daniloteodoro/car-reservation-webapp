@@ -7,11 +7,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { CarrentalServiceService } from './services/carrental-service.service';
 import { SearchComponent } from './components/search/search.component';
+import { ExtrasComponent } from './components/extras/extras.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchComponent
+    SearchComponent,
+    ExtrasComponent
   ],
   imports: [
     BrowserModule,
