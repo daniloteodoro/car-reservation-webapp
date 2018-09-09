@@ -10,6 +10,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
       You chose: {{reservation?.category.type}}<br/>
       Price: EUR {{reservation?.category.pricePerDay}}<br/>
       Total: EUR {{reservation?.total}}<br/>
+      <button type="submit" class="btn btn-primary" (click)="showCustomerDetailsPage()"> Continue >> </button>
       <br/>
       <form *ngIf="started" [formGroup]="extrasForm" (ngSubmit)="submitExtras()" novalidate>
         <div *ngIf="validMessage != ''">
@@ -58,7 +59,7 @@ export class ExtrasComponent implements OnInit {
     'FULL_INSURANCE'
   ];
 
-  constructor(private route: ActivatedRoute, private carRentalService: CarrentalServiceService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private carRentalService: CarrentalServiceService) { }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('reservation');
@@ -73,7 +74,6 @@ export class ExtrasComponent implements OnInit {
     this.carRentalService.loadReservation(id).subscribe(
       reservation => {
         this.setReservation(reservation);
-        console.log(reservation);
       },
       err => { console.error(err); },
       () => {
@@ -137,6 +137,10 @@ export class ExtrasComponent implements OnInit {
     } else {
       this.validMessage = 'Please fill out the form before changing extras!';
     }
+  }
+
+  private showCustomerDetailsPage() {
+    this.router.navigate(['/customer-details', this.reservation.reservationNumber.value]);
   }
 
 }

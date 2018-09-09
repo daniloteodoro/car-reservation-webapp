@@ -79,15 +79,12 @@ export class SearchComponent implements OnInit {
   constructor(private carRentalService: CarrentalServiceService, private router: Router) { }
 
   ngOnInit() {
-    console.log('OnInit');
     this.searchCarsForm = new FormGroup({
       pickupLocation: new FormControl('Rotterdam-NL', Validators.required),
       pickupDateTime: new FormControl('2011-07-16 08:00', Validators.required),
       dropoffLocation: new FormControl('Rotterdam-NL', Validators.required),
       dropoffDateTime: new FormControl('2011-07-20 16:00', Validators.required)
     });
-    console.log('Finish OnInit');
-    console.log('this.form: ' + this.searchCarsForm.value);
     this.started = true;
   }
 
@@ -102,8 +99,7 @@ export class SearchComponent implements OnInit {
         console.log(data);
         this.showReservation(data);
       },
-      err => console.error(err),
-      () => console.log('Category has been chosen!')
+      err => console.error(err)
     );
   }
 
@@ -119,8 +115,7 @@ export class SearchComponent implements OnInit {
 
     this.carRentalService.searchCars(pickupLocation, pickupDateTime, dropoffLocation, dropoffDateTime).subscribe(
       data => { this.models = data; },
-      err => console.error(err),
-      () => console.log('cars loaded')
+      err => console.error(err)
     );
   }
 

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Customer } from '../model/customer';
 
 
 const httpOptions = {
@@ -40,6 +41,12 @@ export class CarrentalServiceService {
     // http://localhost:8081/reservation/6e2c79ad-f6ae-4683-9474-18e4cd16c439/insurance/FULL_INSURANCE
     const url = `/server/reservation/${reservationNumber}/insurance/${insuranceType}`;
     return this.http.put(url, httpOptions);
+  }
+
+  public setCustomerDetails(reservationNumber: string, customerDetails: Customer) {
+    // http://localhost:8081/reservation/ae8e885c-ce1d-4f57-a139-71d5dc2e757e/customer-details
+    const url = `/server/reservation/${reservationNumber}/customer-details`;
+    return this.http.put(url, JSON.stringify(customerDetails), httpOptions);
   }
 
 }
