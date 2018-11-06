@@ -9,13 +9,15 @@ import { CarrentalServiceService } from './services/carrental-service.service';
 import { SearchComponent } from './components/search/search.component';
 import { ExtrasComponent } from './components/extras/extras.component';
 import { CustomerDetailsComponent } from './components/customer-details/customer-details.component';
+import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
     ExtrasComponent,
-    CustomerDetailsComponent
+    CustomerDetailsComponent,
+    OrderConfirmationComponent
   ],
   imports: [
     BrowserModule,

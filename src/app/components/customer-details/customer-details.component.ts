@@ -11,6 +11,7 @@ import { City } from '../../model/city';
     <div class="container">
       You chose: {{reservation?.category.type}}<br/>
       Total: EUR {{reservation?.total}}<br/>
+      <button type="submit" *ngIf="started" class="btn btn-primary" (click)="reserveCar()"> Reserve Car >> </button>
       <br/>
 
       <form *ngIf="started" [formGroup]="customerDetailsForm" (ngSubmit)="submitCustomerDetails()" novalidate>
@@ -68,7 +69,7 @@ export class CustomerDetailsComponent implements OnInit {
     new City('Rotterdam', 'NL')
   ];
 
-  constructor(private route: ActivatedRoute, private carRentalService: CarrentalServiceService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private carRentalService: CarrentalServiceService) { }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('reservation');
@@ -108,12 +109,22 @@ export class CustomerDetailsComponent implements OnInit {
     }
   }
 
+  public reserveCar() {
+    this.carRentalService.reserve(this.reservation.reservationNumber.value).subscribe(
+      data => this.router.navigate(['order-confirmation', 123456]),
+      err => console.error(err),
+      () => console.log('Order placed!')
+    );
+  }
+
   public applyExtras() {
     const fullName = this.customerDetailsForm.value.customerFullName;
     const email = this.customerDetailsForm.value.customerEmail;
     const phone = this.customerDetailsForm.value.customerPhone;
     const address = this.customerDetailsForm.value.customerAddress;
     const city = this.customerDetailsForm.value.customerCity;
+
+    // TODO: Do last validations before sending information
 
     const customer = new Customer(fullName, email, phone, address, city);
 

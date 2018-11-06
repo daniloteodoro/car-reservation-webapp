@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { SearchComponent } from './components/search/search.component';
 import { ExtrasComponent } from './components/extras/extras.component';
 import { CustomerDetailsComponent } from './components/customer-details/customer-details.component';
+import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'customer-details/:reservation',
     component: CustomerDetailsComponent
+  },
+  {
+    path: 'order-confirmation/:ordernumber',
+    component: OrderConfirmationComponent
   }
 ];
 

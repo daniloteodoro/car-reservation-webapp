@@ -22,7 +22,6 @@ export class CarrentalServiceService {
   public chooseCategory(pickupLocation: string, pickupDateTime: string, dropOffLocation: string, dropoffDateTime: string, 
                         chosenCategory: string) {
     const url = `/server/search/from/${pickupLocation}/${pickupDateTime}/to/${dropOffLocation}/${dropoffDateTime}/${chosenCategory}`;
-    console.log(url);
     return this.http.post(url, null, httpOptions);
   }
 
@@ -47,6 +46,12 @@ export class CarrentalServiceService {
     // http://localhost:8081/reservation/ae8e885c-ce1d-4f57-a139-71d5dc2e757e/customer-details
     const url = `/server/reservation/${reservationNumber}/customer-details`;
     return this.http.put(url, JSON.stringify(customerDetails), httpOptions);
+  }
+
+  public reserve(reservationNumber: string) {
+    // http://localhost:8081/reservation/ae8e885c-ce1d-4f57-a139-71d5dc2e757e/confirm
+    const url = `/server/reservation/${reservationNumber}/confirm`;
+    return this.http.post(url, null, httpOptions);
   }
 
 }
