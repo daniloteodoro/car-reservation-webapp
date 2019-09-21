@@ -1,3 +1,7 @@
 .root {
-	text-align: left;
+	text-align: center;
+}
+
+.card {
+	max-width: 345px;
 }
